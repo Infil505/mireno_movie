@@ -1,8 +1,10 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:mireno_movie/provider/discover/discover_provider.dart';
+import 'package:mireno_movie/screen/widget/listview/pelicula_item.dart';
 
-const baseImageUrl = 'http://image.tmdb.org/t/p/';
 
 class CarouselSliderWidget extends StatelessWidget {
   final PeliculaProvider nowPlayingMovies;
@@ -17,8 +19,7 @@ class CarouselSliderWidget extends StatelessWidget {
               child: CircularProgressIndicator(),
             )]
           : nowPlayingMovies.results
-              ?.map((movieItem) =>
-                  Image.network("${baseImageUrl}w342${movieItem.posterPath}"))
+              ?.map((movieItem) =>PeliculaItem(peliItem: movieItem))
               .toList(),
       options: CarouselOptions(
         height: 240,

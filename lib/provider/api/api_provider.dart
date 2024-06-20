@@ -9,7 +9,9 @@ const apiKey =
 
 class ApiService {
   static const nowPlayingUrl = "${baseUrl}now_playing";
-
+  static const popularUrl = "${baseUrl}popular";
+  static const topRateUrl = "${baseUrl}top_rated";
+  static const upComingUrl = "${baseUrl}upcoming";
   Future<PeliculaProvider> fetchNowPlayingMovies() async {
     final headers = {
       'Authorization': 'Bearer $apiKey',
@@ -18,6 +20,63 @@ class ApiService {
 
     final response = await http.get(
       Uri.parse(nowPlayingUrl),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return PeliculaProvider.fromJson(data);
+    } else {
+      throw Exception('Request failed with status: ${response.statusCode}.');
+    }
+  }
+      // llamado a la api para obtner las mas populares
+    Future<PeliculaProvider> fetchPopularMovies() async {
+    final headers = {
+      'Authorization': 'Bearer $apiKey',
+      'Accept': 'application/json',
+    };
+
+    final response = await http.get(
+      Uri.parse(popularUrl),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return PeliculaProvider.fromJson(data);
+    } else {
+      throw Exception('Request failed with status: ${response.statusCode}.');
+    }
+  }
+      // llamado a la api para obtener las top 
+      Future<PeliculaProvider> fetchTopRateMovies() async {
+    final headers = {
+      'Authorization': 'Bearer $apiKey',
+      'Accept': 'application/json',
+    };
+
+    final response = await http.get(
+      Uri.parse(topRateUrl),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return PeliculaProvider.fromJson(data);
+    } else {
+      throw Exception('Request failed with status: ${response.statusCode}.');
+    }
+  }
+      // Llamado a la api para optener la upcoming
+    Future<PeliculaProvider> fetchUpComingMovies() async {
+    final headers = {
+      'Authorization': 'Bearer $apiKey',
+      'Accept': 'application/json',
+    };
+
+    final response = await http.get(
+      Uri.parse(upComingUrl),
       headers: headers,
     );
 
