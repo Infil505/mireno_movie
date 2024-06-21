@@ -1,7 +1,7 @@
 class MovieModel {
   bool? adult;
   String? backdropPath;
-  Null? belongsToCollection;
+  Null belongsToCollection;
   int? budget;
   List<Genres>? genres;
   String? homepage;
