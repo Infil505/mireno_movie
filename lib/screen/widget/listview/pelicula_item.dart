@@ -17,7 +17,7 @@ class PeliculaItem extends StatelessWidget {
       child: InkWell( // este nos permite ver los datos de la pelicula y nos deja ver una animacion 
         onTap: () {
           Navigator.push(context, MaterialPageRoute(
-            builder: (context)=> Detalles(movie: peliItem)));
+            builder: (context)=> Detalles(movie: peliItem)));  // el mejor ejemplo de uso de navigator
         },
         child: Hero(   // widget de animacion
           tag: counter, 

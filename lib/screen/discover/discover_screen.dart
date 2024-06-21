@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mireno_movie/provider/api/api_provider.dart';
 import 'package:mireno_movie/provider/discover/discover_provider.dart';
+import 'package:mireno_movie/provider/discover/nosotros.dart';
 import 'package:mireno_movie/screen/carousel/carousel_screen.dart';
 import 'package:mireno_movie/screen/widget/listview/movie_list.dart';
 
@@ -32,29 +33,16 @@ class _MyMovieAppState extends State<MyMovieApp> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        title: const Text(
-          'El Minero De Peliculas',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 13.0,
-            fontWeight: FontWeight.bold,
+        title: const Center(
+          child: Text(
+            'El Minero De Peliculas',
+            style: TextStyle(
+              color: Colors.redAccent,
+              fontSize: 13.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {
-            // falta poner lo que se vera aqui
-          },
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              // falta aqui el buscar
-            },
-          )
-        ],
       ),
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -150,21 +138,31 @@ class _MyMovieAppState extends State<MyMovieApp> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _index,
         fixedColor: Colors.redAccent,
-        onTap: (int index){
-          setState(() {_index = index;});
+        onTap: (int index) {
+          setState(() {
+            _index = index;
+          });
+          switch (index) {
+            case 0:
+              break; 
+            case 1:
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Nosotros()));
+              break; 
+          }
         },
-        items:  const [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.local_play),
             label: "Categorias",
-            tooltip: "Categorias"
+            tooltip: "Categorias",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.perm_device_information_sharp),
-            label: "Sobre nosotros"
-          )
+            label: "Sobre nosotros",
+            tooltip: "Sobre nosotros",
+          ),
         ],
-        ),
+      ),
     );
   }
 }

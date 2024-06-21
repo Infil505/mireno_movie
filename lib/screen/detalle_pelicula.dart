@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:mireno_movie/provider/discover/discover_provider.dart';
 import 'package:mireno_movie/screen/widget/model/staff.dart';
 import 'dart:convert';
@@ -38,7 +36,6 @@ class _DetallesState extends State<Detalles> {
 
   void fetchMovieData() async {
     try {
-      var decodedJson;
       final response = await http.get(Uri.parse(movieDataUrl), headers: {
         'Authorization': 'Bearer $apiKey',
         'Accept': 'application/json',
@@ -77,7 +74,7 @@ class _DetallesState extends State<Detalles> {
   }
 
   String getDuracion(int runtime) {
-    if (movieModel == null || runtime == null) return 'no presenta duracion';
+    if (movieModel == null ) return 'no presenta duracion';
     double peliHoras = runtime / 60;
     int peliMinutos = ((peliHoras - peliHoras.floor()) * 60).round();
     return "${peliHoras.floor()}h ${peliMinutos}min";

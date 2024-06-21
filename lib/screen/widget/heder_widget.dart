@@ -29,13 +29,11 @@ class HeaderWidget extends StatelessWidget {
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           children: [
-            Container(
-              child: Image.network("${baseImageUrl}w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
-                fit: BoxFit.cover,
-                width: 1000.0,
-                colorBlendMode: BlendMode.dstATop,
-                color: Colors.grey.withOpacity(0.3),
-              ),
+            Image.network("${baseImageUrl}w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+              fit: BoxFit.cover,
+              width: 1000.0,
+              colorBlendMode: BlendMode.dstATop,
+              color: Colors.grey.withOpacity(0.3),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 35.0),

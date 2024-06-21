@@ -26,9 +26,6 @@ class MyWidget extends StatelessWidget {
                   color: Colors.grey),
             ),
           ),
-          // Flexible(
-          //   child: ,
-          // ),
         ],
       ),
     );
