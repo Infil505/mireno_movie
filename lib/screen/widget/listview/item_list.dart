@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:mireno_movie/provider/discover/discover_provider.dart';
 import 'package:mireno_movie/screen/widget/listview/pelicula_item.dart';
 
@@ -30,7 +31,7 @@ class MovieListItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 6.0, top: 2.0),
               child: Text(
-                peliculaItem.releaseDate as String,
+                DateFormat('yyyy').format(DateTime.parse(peliculaItem.releaseDate as String)),
                 style: const TextStyle(fontSize: 8.0),
               ),
             ),

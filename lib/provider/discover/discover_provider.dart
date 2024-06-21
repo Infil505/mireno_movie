@@ -74,6 +74,7 @@ class Results {
   bool? video;
   double? voteAverage;
   int? voteCount;
+  int? counter;
 
   Results(
       {this.adult,

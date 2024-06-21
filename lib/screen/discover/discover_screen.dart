@@ -16,6 +16,7 @@ class _MyMovieAppState extends State<MyMovieApp> {
   late Future<PeliculaProvider> popularMoviesFuture;
   late Future<PeliculaProvider> topRateMoviesFuture;
   late Future<PeliculaProvider> upComingMoviesFuture;
+  int _index = 0;
 
   @override
   void initState() {
@@ -135,7 +136,7 @@ class _MyMovieAppState extends State<MyMovieApp> {
               future: topRateMoviesFuture,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
                   return Center(child: Text('Error: ${snapshot.error}'));
                 } else {
@@ -146,6 +147,24 @@ class _MyMovieAppState extends State<MyMovieApp> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _index,
+        fixedColor: Colors.redAccent,
+        onTap: (int index){
+          setState(() {_index = index;});
+        },
+        items:  const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.local_play),
+            label: "Categorias",
+            tooltip: "Categorias"
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.perm_device_information_sharp),
+            label: "Sobre nosotros"
+          )
+        ],
+        ),
     );
   }
 }
