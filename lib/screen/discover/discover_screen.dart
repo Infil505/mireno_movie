@@ -65,14 +65,12 @@ class _MyMovieAppState extends State<MyMovieApp> {
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                 background: Stack(children: <Widget>[
-                  Container(
-                    child: Image.network(
-                      "${baseImageUrl}w500/bcM2Tl5HlsvPBnL8DKP9Ie6vU4r.jpg",
-                      fit: BoxFit.cover,
-                      width: 1000.0,
-                      colorBlendMode: BlendMode.dstATop,
-                      color: Colors.blue.withOpacity(0.5),
-                    ),
+                  Image.network(
+                    "${baseImageUrl}w500/bcM2Tl5HlsvPBnL8DKP9Ie6vU4r.jpg",
+                    fit: BoxFit.cover,
+                    width: 1000.0,
+                    colorBlendMode: BlendMode.dstATop,
+                    color: Colors.blue.withOpacity(0.5),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 35.0),
@@ -80,7 +78,7 @@ class _MyMovieAppState extends State<MyMovieApp> {
                       future: nowPlayingMoviesFuture,
                       builder: (context, snapshot) {
                         if (snapshot.connectionState == ConnectionState.waiting) {
-                          return Center(child: CircularProgressIndicator());
+                          return const Center(child: CircularProgressIndicator());
                         } else if (snapshot.hasError) {
                           return Center(child: Text('Error: ${snapshot.error}'));
                         } else {
@@ -98,37 +96,37 @@ class _MyMovieAppState extends State<MyMovieApp> {
           children: <Widget>[
             FutureBuilder<PeliculaProvider>(
               future: upComingMoviesFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
+              builder: (context, content) {
+                if (content.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (content.hasError) {
+                  return Center(child: Text('Error: ${content.error}'));
                 } else {
-                  return MoviesListView(pelicula: snapshot.data!, peliculaListTitle: "PROXIMAMENTE");
+                  return MoviesListView(pelicula: content.data!, peliculaListTitle: "PROXIMAMENTE");
                 }
               },
             ),
             FutureBuilder<PeliculaProvider>(
               future: popularMoviesFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
+              builder: (context, content) {
+                if (content.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (content.hasError) {
+                  return Center(child: Text('Error: ${content.error}'));
                 } else {
-                  return MoviesListView(pelicula: snapshot.data!, peliculaListTitle: "POPULARES");
+                  return MoviesListView(pelicula: content.data!, peliculaListTitle: "POPULARES");
                 }
               },
             ),
             FutureBuilder<PeliculaProvider>(
               future: topRateMoviesFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
+              builder: (context, content) {
+                if (content.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (content.hasError) {
+                  return Center(child: Text('Error: ${content.error}'));
                 } else {
-                  return MoviesListView(pelicula: snapshot.data!, peliculaListTitle: "TOP");
+                  return MoviesListView(pelicula: content.data!, peliculaListTitle: "TOP");
                 }
               },
             ),

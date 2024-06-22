@@ -49,7 +49,6 @@ class ApiService {
       throw Exception('Request failed with status: ${response.statusCode}.');
     }
   }
-      // llamado a la api para obtener las top 
       Future<PeliculaProvider> fetchTopRateMovies() async {
     final headers = {
       'Authorization': 'Bearer $apiKey',
@@ -68,7 +67,6 @@ class ApiService {
       throw Exception('Request failed with status: ${response.statusCode}.');
     }
   }
-      // Llamado a la api para optener la upcoming
     Future<PeliculaProvider> fetchUpComingMovies() async {
     final headers = {
       'Authorization': 'Bearer $apiKey',

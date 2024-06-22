@@ -14,12 +14,12 @@ class PeliculaItem extends StatelessWidget {
     peliItem.counter = counter;
     return Material(
       elevation: 15.0,
-      child: InkWell( // este nos permite ver los datos de la pelicula y nos deja ver una animacion 
+      child: InkWell( 
         onTap: () {
           Navigator.push(context, MaterialPageRoute(
-            builder: (context)=> Detalles(movie: peliItem)));  // el mejor ejemplo de uso de navigator
+            builder: (context)=> Detalles(movie: peliItem)));  
         },
-        child: Hero(   // widget de animacion
+        child: Hero(   
           tag: counter, 
           child: Image.network(
             "${baseImageUrl}w342${peliItem.posterPath}",

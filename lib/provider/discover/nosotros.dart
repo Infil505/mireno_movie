@@ -30,7 +30,11 @@ class Nosotros extends StatelessWidget {
               ),
               SizedBox(height: 16.0),
               Text(
-                'Creado por: Darwin Silva Gadea', 
+                'Creado por:', 
+              ),
+              SizedBox(height: 16.0),
+              Text(
+                'desarrollador: Darwin Silva Gadea', 
               ),
             ],
           ),
